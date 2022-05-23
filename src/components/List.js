@@ -1,14 +1,15 @@
 import React from 'react';
-import { View, StyleSheet, TouchableOpacity } from 'react-native';
+import { View, StyleSheet, TouchableOpacity, Image, useWindowDimensions } from 'react-native';
 
 import { Text } from './Text';
 import colors from '../constants/colors';
 
 const styles = StyleSheet.create({
   row: {
-    paddingHorizontal: 15,
-    paddingVertical: 10,
+    flex: 3,
     backgroundColor: colors.white,
+    alignItems: "center",
+    margin: 5
   },
   titleText: {
     fontWeight: 'bold',
@@ -19,14 +20,23 @@ const styles = StyleSheet.create({
   },
 });
 
-export const ListItem = ({ title, subtitle, onPress = () => null }) => {
-  const rowStyles = [styles.row];
+export const ListItem = ({ title, iconUrl, onPress = () => null }) => {
 
   return (
     <TouchableOpacity onPress={onPress}>
-      <View style={rowStyles}>
+      <View style={styles.row}>
+        {iconUrl ? (
+          <Image
+            resizeMode={'contain'}
+            style={{
+              width: 50,
+              height: 50,
+              borderRadius: 10,
+            }}
+            source={iconUrl}
+          />
+        ) : null}
         <Text style={styles.titleText}>{title}</Text>
-        <Text>{subtitle}</Text>
       </View>
     </TouchableOpacity>
   );

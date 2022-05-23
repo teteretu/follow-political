@@ -3,11 +3,10 @@ import { StyleSheet, FlatList, View, Text } from 'react-native';
 
 import colors from '../constants/colors';
 import { ListItem, ListSeparator } from '../components/List';
-import Icon from '../../assets/adaptive-icon.png';
 
 const styles = StyleSheet.create({
   container: {
-    // flex: 1,
+    flex: 1,
     backgroundColor: colors.background,
     paddingVertical: 20,
   },
@@ -15,29 +14,36 @@ const styles = StyleSheet.create({
 
 const screens = [
   {
-    title: 'Deputados',
-    iconUrl: Icon,
-    target: 'DeputiesScreen',
+    title: 'Text',
+    subtitle: 'An example of using the Text.js components.',
+    target: 'TextDemo',
   },
   {
-    title: 'Senadores',
-    iconUrl: Icon,
-    target: 'SenatorsScreen',
+    title: 'Form',
+    subtitle: 'An example of using the Form.js components.',
+    target: 'FormDemo',
+  },
+  {
+    title: 'Button',
+    subtitle: 'An example of using the Button.js components.',
+    target: 'ButtonDemo',
   },
 ];
 
-export const List = ({ navigation }) => {
+export const SenatorsScreen = ({ navigation }) => {
   return (
     <>
+      <View>
+        <Text>Selecione a categoria de políticos:</Text>
+      </View>
       <FlatList
         style={styles.container}
-        contentContainerStyle={{flexDirection: 'column'}}
         data={screens}
         keyExtractor={item => item.title}
         renderItem={({ item }) => (
           <ListItem
             title={item.title}
-            iconUrl={item.iconUrl}
+            subtitle={item.subtitle}
             onPress={() => navigation.push(item.target)}
           />
         )}

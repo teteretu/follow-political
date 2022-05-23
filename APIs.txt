@@ -7,3 +7,10 @@ Depudatos:
 https://dadosabertos.camara.leg.br/swagger/api.html
 Ex.
 https://dadosabertos.camara.leg.br/api/v2/deputados?ordem=ASC&ordenarPor=nome
+
+Dados prefeituras de PE:
+https://www.tce.pe.gov.br/internet/index.php/dados-abertos/definicoes-da-api
+https://sistemas.tce.pe.gov.br/DadosAbertos/Exemplo!listar
+
+APIs Belo Jardim:
+https://belojardim.pe.gov.br/portal-transparencia/dados-abertos/lista-api
