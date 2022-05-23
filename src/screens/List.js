@@ -1,5 +1,5 @@
 import React from 'react';
-import { StyleSheet, FlatList } from 'react-native';
+import { StyleSheet, FlatList, View, Text } from 'react-native';
 
 import colors from '../constants/colors';
 import { ListItem, ListSeparator } from '../components/List';
@@ -32,20 +32,25 @@ const screens = [
 
 export const List = ({ navigation }) => {
   return (
-    <FlatList
-      style={styles.container}
-      data={screens}
-      keyExtractor={item => item.title}
-      renderItem={({ item }) => (
-        <ListItem
-          title={item.title}
-          subtitle={item.subtitle}
-          onPress={() => navigation.push(item.target)}
-        />
-      )}
-      ItemSeparatorComponent={ListSeparator}
-      ListHeaderComponent={ListSeparator}
-      ListFooterComponent={ListSeparator}
-    />
+    <>
+      <View>
+        <Text>Selecione a categoria de políticos:</Text>
+      </View>
+      <FlatList
+        style={styles.container}
+        data={screens}
+        keyExtractor={item => item.title}
+        renderItem={({ item }) => (
+          <ListItem
+            title={item.title}
+            subtitle={item.subtitle}
+            onPress={() => navigation.push(item.target)}
+          />
+        )}
+        ItemSeparatorComponent={ListSeparator}
+        ListHeaderComponent={ListSeparator}
+        ListFooterComponent={ListSeparator}
+      />
+    </>
   );
 };

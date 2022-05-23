@@ -1,0 +1,9 @@
+Senadores:
+https://legis.senado.leg.br/dadosabertos/docs/ui/index.html#/
+Ex.
+https://legis.senado.leg.br/dadosabertos/senador/lista/atual
+
+Depudatos:
+https://dadosabertos.camara.leg.br/swagger/api.html
+Ex.
+https://dadosabertos.camara.leg.br/api/v2/deputados?ordem=ASC&ordenarPor=nome
