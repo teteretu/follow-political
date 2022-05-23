@@ -3,6 +3,7 @@ import { createStackNavigator } from '@react-navigation/stack';
 
 import { List } from '../screens/List';
 import { TextDemo, ButtonDemo, FormDemo } from '../screens/Demos';
+import { DeputiesScreen } from '../screens/DeputiesScreen';
 
 const MainStack = createStackNavigator();
 
@@ -15,9 +16,14 @@ export const Main = () => (
       options={{ headerTitle: 'Text Demo' }}
     />
     <MainStack.Screen
+      name="DeputiesScreen"
+      component={DeputiesScreen}
+      options={{ headerTitle: 'Deputados' }}
+    />
+    <MainStack.Screen
       name="FormDemo"
       component={FormDemo}
-      options={{ headerTitle: 'Button Demo' }}
+      options={{ headerTitle: 'Form Demo' }}
     />
     <MainStack.Screen
       name="ButtonDemo"
