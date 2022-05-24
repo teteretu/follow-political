@@ -1,27 +1,29 @@
 import React from 'react';
-import { StyleSheet, View } from 'react-native';
+import { StyleSheet, View, FlatList } from 'react-native';
 
 import colors from '../constants/colors';
 import { ListItem, ListSeparator } from '../components/List';
-import Icon from '../../assets/adaptive-icon.png';
+import Deputies from '../../assets/Deputies.png';
+import Senator from '../../assets/Senator.png';
 
 const styles = StyleSheet.create({
   container: {
-    flex: 1,
     backgroundColor: colors.background,
-    paddingVertical: 20,
+    flex: 1,
+    padding: 8,
+    flexDirection: "column", // main axis
   },
 });
 
 const screens = [
   {
     title: 'Deputados',
-    iconUrl: Icon,
+    iconUrl: Deputies,
     target: 'DeputiesScreen',
   },
   {
     title: 'Senadores',
-    iconUrl: Icon,
+    iconUrl: Senator,
     target: 'SenatorsScreen',
   },
 ];
@@ -29,19 +31,20 @@ const screens = [
 export const Home = ({ navigation }) => {
   return (
     <>
-      <View style={[styles.container, {
-        flexDirection: "column"
-      }]}>
-        <ListItem
-          title={screens[0].title}
-          iconUrl={screens[0].iconUrl}
-          onPress={() => navigation.push(screens[0].target)} />
-        <ListSeparator />
-        <ListItem
-          title={screens[1].title}
-          iconUrl={screens[1].iconUrl}
-          onPress={() => navigation.push(screens[1].target)} />
-      </View>
+      <FlatList
+        style={styles.container}
+        data={screens}
+        keyExtractor={item => item.title}
+        contentContainerStyle={{}}
+        renderItem={({ item }) => (
+          <ListItem
+            title={item.title}
+            iconUrl={item.iconUrl}
+            onPress={() => navigation.push(item.target)}
+          />
+        )}
+        ListHeaderComponent={ListSeparator}
+      />
     </>
   );
 };

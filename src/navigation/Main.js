@@ -2,10 +2,10 @@ import React from 'react';
 import { createStackNavigator } from '@react-navigation/stack';
 
 import { List } from '../screens/List';
-import { TextDemo, ButtonDemo, FormDemo } from '../screens/Demos';
 import { DeputiesScreen } from '../screens/DeputiesScreen';
 import { SenatorsScreen } from '../screens/SenatorsScreen';
 import { Home } from '../screens/Home';
+import colors from '../constants/colors';
 
 const MainStack = createStackNavigator();
 
@@ -14,7 +14,12 @@ export const Main = () => (
     <MainStack.Screen
       name="Home"
       component={Home}
-      options={{ headerTitle: 'Listar Deputados ou Senadores?' }} />
+      options={{
+        title: 'Listar Deputados ou Senadores?',
+        headerStyle: {
+          backgroundColor: colors.background,
+        },
+      }} />
     <MainStack.Screen
       name="List"
       component={List}

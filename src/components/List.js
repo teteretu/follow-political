@@ -6,13 +6,22 @@ import colors from '../constants/colors';
 
 const styles = StyleSheet.create({
   row: {
-    flex: 3,
-    backgroundColor: colors.white,
-    alignItems: "center",
-    margin: 5
+    // backgroundColor: colors.white,
+    flexDirection: "column", // main axis
+    justifyContent: "center", // main axis
+    alignItems: "center", // cross axis
+    paddingTop: 10,
+    paddingBottom: 10,
+    paddingLeft: 18,
+    paddingRight: 16,
+    marginLeft: 14,
+    marginRight: 14,
+    marginTop: "16%",
+    marginBottom: 6,
   },
   titleText: {
     fontWeight: 'bold',
+    padding: 20,
   },
   separator: {
     height: StyleSheet.hairlineWidth,
@@ -29,8 +38,8 @@ export const ListItem = ({ title, iconUrl, onPress = () => null }) => {
           <Image
             resizeMode={'contain'}
             style={{
-              width: 50,
-              height: 50,
+              width: 150,
+              height: 150,
               borderRadius: 10,
             }}
             source={iconUrl}
