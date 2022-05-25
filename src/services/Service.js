@@ -1,6 +1,6 @@
 import { Component } from "react";
 
-export default class DeputiesService extends Component {
+export default class Service extends Component {
     constructor(props) {
         super(props);
     }
@@ -9,10 +9,14 @@ export default class DeputiesService extends Component {
         //GET request
         return fetch(url, {
             method: 'GET',
+            headers: {
+                Accept: 'application/json',
+            },
         })
-            .then((response) => response.json())
-            .finally((responseJson) => {
-                responseJson;
+            .then((response) => {
+                if (response && response.status == 200) {
+                    return response.json();
+                }
             })
             .catch((error) => {
                 //Error

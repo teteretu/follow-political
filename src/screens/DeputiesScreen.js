@@ -10,8 +10,7 @@ import {
 
 import colors from '../constants/colors';
 import { ListSeparator } from '../components/List';
-import Icon from '../../assets/adaptive-icon.png';
-import DeputiesService from '../services/DeputiesService';
+import Service from '../services/Service';
 
 const styles = StyleSheet.create({
   container: {
@@ -28,7 +27,7 @@ const styles = StyleSheet.create({
     paddingRight: 16,
     marginLeft: 14,
     marginRight: 14,
-    marginTop: "16%",
+    marginTop: 30,
     marginBottom: 6,
   },
   titleText: {
@@ -37,27 +36,18 @@ const styles = StyleSheet.create({
   },
 });
 
-const screens = [
-  {
-    title: 'Deputados',
-    iconUrl: Icon,
-    target: 'DeputiesScreen',
-  },
-  {
-    title: 'Senadores',
-    iconUrl: Icon,
-    target: 'SenatorsScreen',
-  },
-];
+const DEPUTIES_URL = "https://dadosabertos.camara.leg.br/api/v2/deputados?ordem=ASC&ordenarPor=nome";
 
 export const DeputiesScreen = ({ navigation }) => {
   const [deputiesList, setDeputiesList] = useState([]);
 
   useEffect(async () => {
-    const deputies = await new DeputiesService().getDataUsingGet("https://dadosabertos.camara.leg.br/api/v2/deputados?ordem=ASC&ordenarPor=nome");
+    const deputies = await new Service().getDataUsingGet(DEPUTIES_URL);
 
     console.log("DEPUTIES: ", deputies);
-    setDeputiesList(deputies.dados);
+    if (deputies) {
+      setDeputiesList(deputies.dados);
+    }
   }, []);
 
   return (
@@ -66,12 +56,13 @@ export const DeputiesScreen = ({ navigation }) => {
         style={styles.container}
         contentContainerStyle={{ flexDirection: 'column' }}
         data={deputiesList}
-        keyExtractor={item => item.title}
+        keyExtractor={item => item.id}
         renderItem={({ item }) => (
           <ListItem
+            key={item.id}
             title={item.nome}
             iconUrl={item.urlFoto}
-            // onPress={() => navigation.push(item.target)}
+          // onPress={() => navigation.push(item.target)}
           />
         )}
         ItemSeparatorComponent={ListSeparator}
@@ -95,7 +86,7 @@ const ListItem = ({ title, iconUrl, onPress = () => null }) => {
               height: 150,
               borderRadius: 10,
             }}
-            source={{uri: iconUrl}}
+            source={{ uri: iconUrl }}
           />
         ) : null}
         <Text style={styles.titleText}>{title}</Text>
