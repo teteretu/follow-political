@@ -1,10 +1,11 @@
 import React from 'react';
 import { createStackNavigator } from '@react-navigation/stack';
 
-import { DeputiesScreen } from '../screens/DeputiesScreen';
+import { DeputadosScreen, DeputiesScreen } from '../screens/DeputadosScreen';
 import { SenatorsScreen } from '../screens/SenatorsScreen';
 import { Home } from '../screens/Home';
 import colors from '../constants/colors';
+import { DeputadoDetailScreen, DeputiesDetailScreen } from '../screens/DeputadoDetailScreen';
 
 const MainStack = createStackNavigator();
 
@@ -23,8 +24,8 @@ export const Main = () => (
         title: 'Listar Deputados ou Senadores?',
       }} />
     <MainStack.Screen
-      name="DeputiesScreen"
-      component={DeputiesScreen}
+      name="DeputadosScreen"
+      component={DeputadosScreen}
       options={{
         headerTitle: 'Deputados',
       }}
@@ -33,6 +34,11 @@ export const Main = () => (
       name="SenatorsScreen"
       component={SenatorsScreen}
       options={{ headerTitle: 'Senadores' }}
+    />
+    <MainStack.Screen
+      name="DeputadoDetailScreen"
+      component={DeputadoDetailScreen}
+      options={({ route }) => ({ title: route.params.deputado.nome })}
     />
     {/* 
     <MainStack.Screen

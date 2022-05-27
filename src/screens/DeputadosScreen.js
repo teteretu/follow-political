@@ -38,13 +38,12 @@ const styles = StyleSheet.create({
 
 const DEPUTIES_URL = "https://dadosabertos.camara.leg.br/api/v2/deputados?ordem=ASC&ordenarPor=nome";
 
-export const DeputiesScreen = ({ navigation }) => {
+export const DeputadosScreen = ({ navigation }) => {
   const [deputiesList, setDeputiesList] = useState([]);
 
   useEffect(async () => {
     const deputies = await new Service().getDataUsingGet(DEPUTIES_URL);
 
-    console.log("DEPUTIES: ", deputies);
     if (deputies) {
       setDeputiesList(deputies.dados);
     }
@@ -62,7 +61,7 @@ export const DeputiesScreen = ({ navigation }) => {
             key={item.id}
             title={item.nome}
             iconUrl={item.urlFoto}
-          // onPress={() => navigation.push(item.target)}
+            onPress={() => navigation.push("DeputadoDetailScreen", {"deputado": item})}
           />
         )}
         ItemSeparatorComponent={ListSeparator}

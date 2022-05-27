@@ -3,7 +3,7 @@ import { StyleSheet, View, FlatList } from 'react-native';
 
 import colors from '../constants/colors';
 import { ListItem, ListSeparator } from '../components/List';
-import Deputies from '../../assets/Deputies.png';
+import Deputados from '../../assets/Deputados.png';
 import Senator from '../../assets/Senator.png';
 
 const styles = StyleSheet.create({
@@ -18,8 +18,8 @@ const styles = StyleSheet.create({
 const screens = [
   {
     title: 'Deputados',
-    iconUrl: Deputies,
-    target: 'DeputiesScreen',
+    iconUrl: Deputados,
+    target: 'DeputadosScreen',
   },
   {
     title: 'Senadores',

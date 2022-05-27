@@ -36,8 +36,8 @@ export default class Service extends Component {
             formBody.push(encodedKey + '=' + encodedValue);
         }
         formBody = formBody.join('&');
-        //POST request
-        fetch('https://jsonplaceholder.typicode.com/posts', {
+        
+        return fetch('https://jsonplaceholder.typicode.com/posts', {
             method: 'POST', //Request Type
             body: formBody, //post body
             headers: {
@@ -46,12 +46,7 @@ export default class Service extends Component {
             },
         })
             .then((response) => response.json())
-            //If response is in json then in success
-            .then((responseJson) => {
-                alert(JSON.stringify(responseJson));
-                console.log(responseJson);
-            })
-            //If response is not in json then in error
+            .then((responseJson) => alert(JSON.stringify(responseJson)))
             .catch((error) => {
                 alert(JSON.stringify(error));
                 console.error(error);
